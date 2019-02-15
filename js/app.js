@@ -1,30 +1,27 @@
 //Variables
-const sendBtn = document.getElementById('sendBtn');
-      email = document.getElementById('email');
-      subject = document.getElementById('subject');
-      message = document.getElementById('message');
-      resetBtn = document.getElementById('resetBtn');
+const sendBtn = document.getElementById('sendBtn'),
+      email = document.getElementById('email'),
+      subject = document.getElementById('subject'),
+      message = document.getElementById('message'),
+      resetBtn = document.getElementById('resetBtn'),
       sendEmailForm = document.getElementById('email-form');
 
-//Event listeners
-addEventListeners();
+// Event Listeners
+eventListeners();
 
-function addEventListeners(){
-    //App init
-    document.addEventListener('DOMContentLoaded', appInit);
+function eventListeners() {
+     // App Init
+     document.addEventListener('DOMContentLoaded', appInit);
 
-    //Validate the forms
-    email = document.addEventListener('blur', validateForm);
-    subject = document.addEventListener('blur', validateForm);
-    message = document.addEventListener('blur', validateForm);
+     // Validate the forms
+     email.addEventListener('blur', validateForm);
+     subject.addEventListener('blur', validateForm);
+     message.addEventListener('blur', validateForm);
 
-    //Send email and reset form
-    sendEmailForm.addEventListener('submit', sendEmail);
-    resetBtn.addEventListener('click', resetForm);
+     // Send Email & reset button
+     sendEmailForm.addEventListener('submit', sendEmail);
+     resetBtn.addEventListener('click', resetForm);
 }
-
-//Functions
-
 
 //App Initialization
 function appInit(){
@@ -71,7 +68,7 @@ function validateForm(){
 
     //Check for no empty inputs
     if(email.value !=='' && subject.value !=='' && message.value !== ''){
-        if(error.length ===0){
+        if(error.length === 0){
             sendBtn.disabled = false;
         }
 
