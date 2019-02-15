@@ -19,6 +19,7 @@ function addEventListeners(){
     message = document.addEventListener('blur', validateForm);
 
     //Send email and reset form
+    sendEmailForm.addEventListener('submit', sendEmail);
     resetBtn.addEventListener('click', resetForm);
 }
 
@@ -28,6 +29,29 @@ function addEventListeners(){
 //App Initialization
 function appInit(){
 sendBtn.disabled = true;
+}
+
+function sendEmail(e){
+    e.preventDefault();
+
+    const spinner = document.querySelector('#spinner');
+    spinner.style.display = 'block';
+
+    const sendEmailImg = document.createElement('img');
+    sendEmailImg.src = 'img/mail.gif';
+    sendEmailImg.style.display = 'block';
+
+    setTimeout(function(){
+        spinner.style.display = 'none';
+        document.querySelector('#loader').appendChild(sendEmailImg);
+        setTimeout(function(){
+            sendEmailForm.reset();
+            sendEmailImg.remove();
+        }, 5000);
+
+
+    }, 3000);
+
 }
 
 //Validate Form
